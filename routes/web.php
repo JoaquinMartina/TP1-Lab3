@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::view('/customer','customerForm');
+//Route::get('/customer', 'HomeCustomerFormController@index')->name('homeCustomer');
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
