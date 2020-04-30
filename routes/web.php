@@ -13,15 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/customer','customerForm');
-//Route::get('/customer', 'HomeCustomerFormController@index')->name('homeCustomer');
-
-
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/customer', 'CustomerFormController@showForm')->name('customerForm');
+Route::post('/customer', 'CustomerFormController@sendForm')->name('sendCustomerForm');
