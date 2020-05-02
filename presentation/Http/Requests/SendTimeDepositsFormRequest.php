@@ -24,8 +24,8 @@ class SendTimeDepositsFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'surname' => 'required',
+            'name' => 'required|min:3|max:20',
+            'surname' => 'required|min:3|max:20',
             'amountDeposited' => 'required|numeric|min:1000',
             'days' => 'required|numeric|min:30',
         ];

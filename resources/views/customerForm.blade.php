@@ -14,18 +14,18 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{__('Nombre')}}</label>
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="">
+                                    <input id="name" type="text" class="form-control" name="name" value="{{old('name')}}">
                                         @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">Apellido</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">{{__('Apellido')}}</label>
                                 <div class="col-md-6">
-                                    <input id="surname" type="text" class="form-control" name="surname" value="">
+                                    <input id="surname" type="text" class="form-control" name="surname" value="{{old('surname')}}">
                                         @error('surname')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -34,7 +34,7 @@
                             <div class="form-group row">
                                 <label for="amountDeposited" class="col-md-4 col-form-label text-md-right">{{__('Monto a invertir')}}</label>
                                 <div class="col-md-6">
-                                    <input id="amountDeposited" type="number" class="form-control" name="amountDeposited" value="">
+                                    <input id="amountDeposited" type="number" class="form-control" name="amountDeposited" value="{{old('amountDeposited')}}">
                                         @error('amountDeposited')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -43,7 +43,7 @@
                             <div class="form-group row">
                                 <label for="days" class="col-md-4 col-form-label text-md-right">{{__('Cantidad de dias')}}</label>
                                 <div class="col-md-6">
-                                    <input id="days" type="number" class="form-control" name="days" value="">
+                                    <input id="days" type="number" class="form-control" name="days" value="{{old('days')}}">
                                         @error('days')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
