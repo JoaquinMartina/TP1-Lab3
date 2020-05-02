@@ -24,5 +24,5 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/customer', 'CustomerFormController@showForm')->name('customerForm');
-//Route::post('/customer', 'CustomerFormController@sendForm')->name('sendCustomerForm');
+Route::post('/customer', 'CustomerFormController@sendForm')->name('sendCustomerForm');
 
