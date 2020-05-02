@@ -20,6 +20,7 @@ class CustomerFormController extends Controller
         return view('customerForm');
     }
 
+
     public function sendForm(SendTimeDepositsFormRequest $request)
     {
         $name = $request->input('name');
@@ -30,7 +31,9 @@ class CustomerFormController extends Controller
 
         $finalAmount = $this->timeDepositsService->calculateFinalDeposit($amount, $days);
 
-        if ($reinvestment == true) {
+        //TODO Refactor
+
+        if ($reinvestment == false) {
 
             return view('informationTimeDeposits', [
                 'nameSurname' => $name . " " . $surname,
@@ -43,12 +46,13 @@ class CustomerFormController extends Controller
 
         else {
 
-            return view('informationTimeDeposits', [
+            $period = $this->timeDepositsService->calculatePeriodDeposit($amount,$days);
+
+            return view('informationPeriodTimeDeposits',[
                 'nameSurname' => $name . " " . $surname,
                 'amountDeposited' => $amount,
                 'days' => $days,
-                'finalAmount'=> $finalAmount,
-                'reinvestment' => $reinvestment,
+                'period' => $period
             ]);
 
         }

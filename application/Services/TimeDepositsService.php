@@ -7,12 +7,20 @@ class TimeDepositsService
     public function calculateFinalDeposit(float $amount, int $days): float
     {
         $percentage = $this->calculatePercentage($days);
-        return $amount + ($amount*($days/360)*($percentage/100));
+        $finalAMount = $amount + ($amount*($days/360)*($percentage/100));
+
+        return round($finalAMount, 2);
     }
 
-    public function calculatePeriodDeposit(float $amount, int $days)
+    //TODO Refactor
+    public function calculatePeriodDeposit(float $amount, int $days): array
     {
-        //TODO
+       return $period = [
+                'period1' => $period1 = $this->calculateFinalDeposit($amount,$days),
+                'period2' => $period2 = $this->calculateFinalDeposit($period1,$days),
+                'period3' => $period3 = $this->calculateFinalDeposit($period2,$days),
+                'period4' => $period4 = $this->calculateFinalDeposit($period3,$days),
+                ];
     }
 
     private function calculatePercentage(int $days): float
