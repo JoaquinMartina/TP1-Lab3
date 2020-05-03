@@ -12,15 +12,24 @@ class TimeDepositsService
         return round($finalAMount, 2);
     }
 
-    //TODO Refactor
+
     public function calculatePeriodDeposit(float $amount, int $days): array
     {
-       return $period = [
-                'period1' => $period1 = $this->calculateFinalDeposit($amount,$days),
-                'period2' => $period2 = $this->calculateFinalDeposit($period1,$days),
-                'period3' => $period3 = $this->calculateFinalDeposit($period2,$days),
-                'period4' => $period4 = $this->calculateFinalDeposit($period3,$days),
-                ];
+        $amountPeriod = [$amount];
+
+        for($i=1; $i<=4; $i++)
+        {
+            $amountPeriod[$i] = $this->calculateFinalDeposit($amountPeriod[$i-1],$days);
+
+            $dataPeriod[$i] = [
+                    'numberPeriod' => $i,
+                    'initialAmount'=> $amountPeriod[$i-1],
+                    'finalAmount'=> $amountPeriod[$i]
+            ];
+        }
+
+        return $dataPeriod;
+
     }
 
     private function calculatePercentage(int $days): float

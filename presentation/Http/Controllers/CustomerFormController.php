@@ -29,32 +29,30 @@ class CustomerFormController extends Controller
         $days = $request->input('days');
         $reinvestment = $request->input('reinvestment');
 
-        $finalAmount = $this->timeDepositsService->calculateFinalDeposit($amount, $days);
-
-        //TODO Refactor
-
         if ($reinvestment == false) {
 
-            return view('informationTimeDeposits', [
+            $finalAmount = $this->timeDepositsService->calculateFinalDeposit($amount, $days);
+
+            $dataTimeDeposits = [
                 'nameSurname' => $name . " " . $surname,
                 'amountDeposited' => $amount,
                 'days' => $days,
-                'finalAmount' => $finalAmount,
-            ]);
+                'finalAmount'=>$finalAmount
+            ];
 
+            return view('informationTimeDeposits', compact('dataTimeDeposits'));
         }
 
-        else {
+        else
+        {
+            $dataPeriod = $this->timeDepositsService->calculatePeriodDeposit($amount,$days);
 
-            $period = $this->timeDepositsService->calculatePeriodDeposit($amount,$days);
-
-            return view('informationPeriodTimeDeposits',[
+            $dataTimeDeposits = [
                 'nameSurname' => $name . " " . $surname,
-                'amountDeposited' => $amount,
-                'days' => $days,
-                'period' => $period
-            ]);
+            ];
 
+            return view('informationTimeDeposits', compact('dataPeriod','dataTimeDeposits'));
         }
+
     }
 }
