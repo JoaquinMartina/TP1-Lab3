@@ -49,19 +49,38 @@
                                         @enderror
                                 </div>
                             </div>
+
+
+                            <!--TODO refactor script -->
+
+                            <script type="text/javascript">
+                                function showContent() {
+                                    var element = document.getElementById("content");
+                                    var check = document.getElementById("check");
+                                    if (check.checked) {
+                                        element.style.display='block';
+                                    }
+                                    else {
+                                        element.style.display='none';
+                                    }
+                                }
+                            </script>
+
                             <div class="form-group row">
                                 <label for="reinvestment" class="col-md-4 col-form-label text-md-right">{{__('Reinvertir')}}</label>
                                 <div class="col-md-1">
-                                    <input id="reinvestment" type="checkbox" class="form-control" name="reinvestment" value="true" {{old('reinvestment')}}>
+                                    <input id="check" type="checkbox" class="form-control" name="reinvestment" value="true" onchange="javascript:showContent()">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="numberPeriods" class="col-md-4 col-form-label text-md-right">{{__('Períodos')}}</label>
-                                <div class="col-md-6">
-                                    <input id="numberPeriods" type="number" class="form-control" name="numberPeriods">
-                                        @error('numberPeriods')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                            <div id="content" style="display:none">
+                                <div class="form-group row">
+                                    <label for="numberPeriods" class="col-md-4 col-form-label text-md-right">{{__('Períodos')}}</label>
+                                    <div class="col-md-6">
+                                        <input id="numberPeriods" type="number" class="form-control" name="numberPeriods" value="{{old('numberPeriods')}}">
+                                            @error('numberPeriods')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div>

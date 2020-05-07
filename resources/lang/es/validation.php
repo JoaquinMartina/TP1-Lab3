@@ -183,6 +183,7 @@ return [
         'username'              => 'usuario',
         'year'                  => 'año',
         'amountDeposited'       => 'monto a invertir',
-        'days'                  => 'cantidad de dias'
+        'days'                  => 'cantidad de dias',
+        'numberPeriods'         => 'numero de períodos'
     ],
 ];

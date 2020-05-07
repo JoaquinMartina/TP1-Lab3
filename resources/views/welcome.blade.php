@@ -83,7 +83,7 @@
                 </div>
 
             <div class="content">
-                <div class="title m-b-md">Laboratorio de Programacion III</div>
+                <div class="title m-b-md">Laboratorio de Computación III</div>
 
                 <div class="title2 m-b-md">Trabajo Practico 1</div>
 
