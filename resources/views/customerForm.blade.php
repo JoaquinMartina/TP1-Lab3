@@ -49,21 +49,26 @@
                                         @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="reinvestment" class="col-md-4 col-form-label text-md-right">{{__('Reinvertir capital')}}</label>
-                                <div class="col-md-6">
+                            <div class="form-group row float-xl-left">
+                                <label for="reinvestment" class="col-md-4 col-form-label text-md-right">{{__('Reinvertir')}}</label>
+                                <div class="col-md-1">
                                     <input id="reinvestment" type="checkbox" class="form-control" name="reinvestment" value="true">
                                 </div>
                             </div>
-
                             <div class="form-group row">
-                                <div class="col-md-8 offset-md-4 justify-content-around">
-                                    <button type="submit" class="btn btn-primary">Calcular</button>
+                                <label for="numberPeriods" class="col-md-4 col-form-label text-md-right">{{__('Períodos')}}</label>
+                                <div class="col-md-6">
+                                    <input id="numberPeriods" type="number" class="form-control" name="numberPeriods">
                                 </div>
                             </div>
-
+                            <div>
+                                <div class="form-group row">
+                                    <div class="col-md-8 offset-md-4 justify-content-around">
+                                        <button type="submit" class="btn btn-primary">{{__('Calcular')}}</button>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
-
                     </div>
                 </div>
             </div>
