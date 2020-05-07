@@ -49,16 +49,19 @@
                                         @enderror
                                 </div>
                             </div>
-                            <div class="form-group row float-xl-left">
+                            <div class="form-group row">
                                 <label for="reinvestment" class="col-md-4 col-form-label text-md-right">{{__('Reinvertir')}}</label>
                                 <div class="col-md-1">
-                                    <input id="reinvestment" type="checkbox" class="form-control" name="reinvestment" value="true">
+                                    <input id="reinvestment" type="checkbox" class="form-control" name="reinvestment" value="true" {{old('reinvestment')}}>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="numberPeriods" class="col-md-4 col-form-label text-md-right">{{__('Períodos')}}</label>
                                 <div class="col-md-6">
                                     <input id="numberPeriods" type="number" class="form-control" name="numberPeriods">
+                                        @error('numberPeriods')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                 </div>
                             </div>
                             <div>

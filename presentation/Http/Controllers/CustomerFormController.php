@@ -4,6 +4,7 @@ namespace Presentation\Http\Controllers;
 
 use Presentation\Http\Requests\SendTimeDepositsFormRequest;
 use Application\Services\TimeDepositsService;
+use Symfony\Component\Console\Input\Input;
 
 
 class CustomerFormController extends Controller
@@ -28,6 +29,7 @@ class CustomerFormController extends Controller
         $amount = $request->input('amountDeposited');
         $days = $request->input('days');
         $reinvestment = $request->input('reinvestment');
+        $numberPeriods = $request->input('numberPeriods');
 
         if ($reinvestment == false) {
 
@@ -45,7 +47,10 @@ class CustomerFormController extends Controller
 
         else
         {
-            $dataPeriod = $this->timeDepositsService->calculatePeriodDeposit($amount,$days);
+            //TODO refactor rules validation
+            $request->validate(['numberPeriods'=> 'required|numeric|min:1|max:10']);
+
+            $dataPeriod = $this->timeDepositsService->calculatePeriodDeposit($amount,$days,$numberPeriods);
 
             $dataTimeDeposits = [
                 'nameSurname' => $name . " " . $surname,

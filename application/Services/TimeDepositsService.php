@@ -13,11 +13,11 @@ class TimeDepositsService
     }
 
 
-    public function calculatePeriodDeposit(float $amount, int $days): array
+    public function calculatePeriodDeposit(float $amount, int $days, int $numberPeriods): array
     {
         $amountPeriod = [$amount];
 
-        for($i=1; $i<=4; $i++)
+        for($i=1; $i<=$numberPeriods; $i++)
         {
             $amountPeriod[$i] = $this->calculateFinalDeposit($amountPeriod[$i-1],$days);
 
