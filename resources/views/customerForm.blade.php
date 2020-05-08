@@ -54,7 +54,7 @@
                             <!--TODO refactor script -->
 
                             <script type="text/javascript">
-                                function showContent() {
+                                function eventShowContent() {
                                     var element = document.getElementById("content");
                                     var check = document.getElementById("check");
                                     if (check.checked) {
@@ -64,12 +64,13 @@
                                         element.style.display='none';
                                     }
                                 }
+
                             </script>
 
                             <div class="form-group row">
                                 <label for="reinvestment" class="col-md-4 col-form-label text-md-right">{{__('Reinvertir')}}</label>
                                 <div class="col-md-1">
-                                    <input id="check" type="checkbox" class="form-control" name="reinvestment" value="true" onchange="javascript:showContent()">
+                                    <input id="check" type="checkbox" class="form-control" name="reinvestment" value="true" onclick="javascript:eventShowContent()">
                                 </div>
                             </div>
                             <div id="content" style="display:none">
